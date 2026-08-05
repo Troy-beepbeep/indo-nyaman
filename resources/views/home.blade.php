@@ -38,9 +38,9 @@
         <div class="relative mx-auto aspect-square w-full max-w-md">
             <div class="absolute inset-0 rounded-[40%_60%_60%_40%/50%_40%_60%_50%] bg-sage/30"></div>
             <div class="absolute inset-6 rounded-[55%_45%_45%_55%/45%_55%_45%_55%] bg-brand/20"></div>
-            <div class="absolute inset-12 flex items-center justify-center rounded-[45%_55%_55%_45%/55%_45%_55%_45%] bg-white shadow-xl">
-                <span class="font-display text-sm text-ink/50" x-text="lang === 'id' ? '[foto tim/hasil kerja]' : '[team/portfolio photo]'"></span>
-            </div>
+           <div class="absolute inset-12 overflow-hidden rounded-[45%_55%_55%_45%/55%_45%_55%_45%] bg-white shadow-xl">
+    <img src="{{ asset('images/hero-photo.jpg') }}" alt="Tim Indo Nyaman sedang bekerja" class="h-full w-full object-cover">
+</div>
         </div>
     </div>
 </section>
