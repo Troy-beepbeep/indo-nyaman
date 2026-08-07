@@ -478,6 +478,7 @@
                     return cleaned;
                 },
                 async submitForm() {
+                    if (this.loading) return;
                     this.loading = true;
                     const formattedPhone = this.formatPhone(this.telepon);
 
@@ -521,8 +522,8 @@
 
             <div>
                 <label class="text-sm font-medium text-ink" x-text="lang === 'id' ? 'Nomor WhatsApp' : 'WhatsApp Number'"></label>
-                <input type="tel" x-model="telepon" required placeholder="08xxxxxxxxxx"
-                       class="mt-1.5 w-full rounded-lg border border-sage/40 px-4 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand">
+                <input type="tel" x-model="telepon" required minlength="9" pattern="[0-9+\-\s]+" placeholder="08xxxxxxxxxx"
+       class="mt-1.5 w-full rounded-lg border border-sage/40 px-4 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand">
             </div>
 
             <div>
