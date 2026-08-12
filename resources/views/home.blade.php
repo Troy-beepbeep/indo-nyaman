@@ -188,7 +188,7 @@
         </div>
 
         <div class="mt-12 grid gap-6 md:grid-cols-3">
-            @foreach ($testimonials as $testimonial)
+            @forelse ($testimonials as $testimonial)
                 <div class="rounded-2xl border border-sage/30 bg-cream/40 p-6">
                     <div class="text-clay">
                         {{ str_repeat('★', $testimonial->rating) }}{{ str_repeat('☆', 5 - $testimonial->rating) }}
@@ -206,7 +206,11 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+           @empty
+              <div class="md:col-span-3 rounded-2xl border border-dashed border-sage/40 bg-cream/40 p-10 text-center">
+                  <p class="text-ink/60" x-text="lang === 'id' ? 'Belum ada testimoni yang ditampilkan.' : 'No reviews to show yet.'"></p>
+              </div>
+          @endforelse
         </div>
     </div>
 </section>
@@ -241,7 +245,7 @@
         </div>
 
         <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            @foreach ($galleryItems as $item)
+            @forelse ($galleryItems as $item)
                 <div x-show="activeFilter === 'all' || activeFilter === '{{ $item->tag }}'"
                      x-transition:enter="transition ease-out duration-300"
                      x-transition:enter-start="opacity-0 scale-95"
@@ -268,7 +272,11 @@
                         <span class="rounded-full bg-white/90 p-2.5 text-xs font-bold text-ink shadow" x-text="lang === 'id' ? '🔍 Perbesar' : '🔍 Enlarge'"></span>
                     </div>
                 </div>
-            @endforeach
+           @empty
+              <div class="sm:col-span-2 lg:col-span-3 rounded-2xl border border-dashed border-sage/40 bg-white p-10 text-center">
+                  <p class="text-ink/60" x-text="lang === 'id' ? 'Belum ada foto di galeri.' : 'No photos in the gallery yet.'"></p>
+              </div>
+          @endforelse
         </div>
         <p class="mt-6 text-center text-sm text-ink/50" x-text="lang === 'id' ? 'Klik pada gambar untuk melihat tampilan lebih besar.' : 'Click on an image to view it in full size.'"></p>
     </div>
@@ -423,7 +431,7 @@
         </div>
 
         <div class="mt-12 grid gap-6 lg:grid-cols-3">
-            @foreach ($pricingPackages as $package)
+            @forelse ($pricingPackages as $package)
                 <div class="relative rounded-2xl p-8 {{ $package->is_featured ? 'border-2 border-brand bg-white shadow-lg' : 'border border-sage/30 bg-white' }}">
                     @if ($package->is_featured)
                         <span class="absolute -top-3 left-8 rounded-full bg-brand px-3 py-1 text-xs font-semibold text-cream" x-text="lang === 'id' ? 'Paling Diminati' : 'Most Popular'"></span>
@@ -446,7 +454,11 @@
                        x-text="lang === 'id' ? 'Tanya via WhatsApp' : 'Inquire via WhatsApp'">
                     </a>
                 </div>
-            @endforeach
+            @empty
+              <div class="lg:col-span-3 rounded-2xl border border-dashed border-sage/40 bg-white p-10 text-center">
+                  <p class="text-ink/60" x-text="lang === 'id' ? 'Paket harga belum tersedia saat ini.' : 'No pricing packages available right now.'"></p>
+              </div>
+          @endforelse
         </div>
     </div>
 </section>
